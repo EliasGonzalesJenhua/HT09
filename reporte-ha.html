@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reporte HA - HT09</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 18mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #1f2933;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 1.55;
+        background: #ffffff;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        color: #0f172a;
+        font-size: 30px;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+
+      h2 {
+        color: #0f3b5f;
+        font-size: 18px;
+        border-bottom: 2px solid #d9e7ef;
+        padding-bottom: 6px;
+        margin: 26px 0 12px;
+      }
+
+      h3 {
+        color: #132f4c;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0 18px;
+      }
+
+      th,
+      td {
+        border: 1px solid #cdd8e0;
+        padding: 8px;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eef6fa;
+        color: #102a43;
+        font-weight: 700;
+      }
+
+      ul,
+      ol {
+        margin-top: 6px;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 4px;
+      }
+
+      .cover {
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 3px solid #0f3b5f;
+        padding: 34px;
+      }
+
+      .cover-label {
+        color: #0f6b8f;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        color: #40566b;
+        font-size: 16px;
+        margin-bottom: 26px;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .meta div,
+      .callout,
+      .decision-box {
+        border: 1px solid #cdd8e0;
+        background: #f7fbfd;
+        padding: 12px;
+      }
+
+      .meta strong,
+      .tag {
+        display: block;
+        color: #0f3b5f;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      .page-break {
+        break-before: page;
+      }
+
+      .decision-box {
+        border-left: 5px solid #0f6b8f;
+        margin: 10px 0 18px;
+      }
+
+      .score {
+        font-weight: 700;
+        color: #0b6b52;
+      }
+
+      .risk {
+        font-weight: 700;
+        color: #a33b20;
+      }
+
+      .footer-note {
+        color: #607083;
+        font-size: 11px;
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cover">
+      <p class="cover-label">Reporte tecnico</p>
+      <h1>Planifica alta disponibilidad y tolerancia de fallos</h1>
+      <p class="subtitle">
+        Evaluacion, seleccion y justificacion de una arquitectura HA para un entorno virtualizado orientado a ciencia de datos e inteligencia artificial.
+      </p>
+      <div class="decision-box">
+        <span class="tag">Resultado principal</span>
+        Se selecciona una arquitectura de cluster HA con minimo dos hosts fisicos, almacenamiento compartido o replicado, red redundante, monitoreo continuo y politicas de failover para proteger maquinas virtuales criticas.
+      </div>
+      <div class="meta">
+        <div><strong>Proyecto</strong>HT09</div>
+        <div><strong>Tema</strong>Alta disponibilidad y tolerancia de fallos</div>
+        <div><strong>Entorno</strong>Servidores virtualizados para datos e IA</div>
+        <div><strong>Fecha</strong>Junio 2026</div>
+      </div>
+    </section>
+
+    <section class="page-break">
+      <h2>1. Lo que pide la actividad</h2>
+      <p>
+        La actividad solicita planificar una solucion de alta disponibilidad y tolerancia de fallos para servidores virtualizados. Para cumplirlo, el proyecto debe demostrar que se evaluaron alternativas tecnicas, que se selecciono una arquitectura adecuada y que la decision fue justificada segun continuidad del servicio, criticidad de las cargas, costo, complejidad y capacidad de recuperacion.
+      </p>
+      <div class="callout">
+        <strong>Enfoque del reporte:</strong> documentar que se ha evaluado, seleccionado y justificado una arquitectura HA aplicable al caso practico del laboratorio de ciencia de datos e inteligencia artificial.
+      </div>
+
+      <h2>2. Contexto del proyecto</h2>
+      <p>
+        El proyecto HT09 plantea un entorno con maquinas virtuales que ejecutan bases de datos, procesamiento por lotes, entrenamiento de modelos de IA, visualizacion y servicios auxiliares. Estas cargas dependen de hosts fisicos, red, almacenamiento e hipervisor. Si alguno de estos componentes falla sin mecanismos HA, el servicio puede quedar detenido, generando perdida de continuidad, retrasos operativos y posible perdida de informacion en proceso.
+      </p>
+
+      <h2>3. Objetivo de la arquitectura HA</h2>
+      <p>
+        Garantizar que las cargas criticas puedan continuar o recuperarse rapidamente ante fallos de host, red, almacenamiento o hipervisor. La arquitectura debe reducir el tiempo de inactividad, proteger los datos y permitir que las maquinas virtuales criticas se reinicien o migren a otro nodo disponible.
+      </p>
+
+      <h2>4. Componentes evaluados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Criticidad</th>
+            <th>Riesgo si falla</th>
+            <th>Medida HA requerida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bases de datos</td>
+            <td>Critica</td>
+            <td>Interrupcion de consultas, perdida de transacciones o inconsistencia.</td>
+            <td>Replica, backup, monitoreo y reinicio automatico en otro host.</td>
+          </tr>
+          <tr>
+            <td>VM de procesamiento e IA</td>
+            <td>Critica</td>
+            <td>Detencion de entrenamientos, trabajos incompletos y retrasos.</td>
+            <td>Cluster HA, politicas de reinicio y capacidad de failover.</td>
+          </tr>
+          <tr>
+            <td>Almacenamiento</td>
+            <td>Critica</td>
+            <td>Indisponibilidad de discos virtuales y riesgo de perdida de datos.</td>
+            <td>SAN/NAS compartido, replica o almacenamiento distribuido.</td>
+          </tr>
+          <tr>
+            <td>Red del cluster</td>
+            <td>Alta</td>
+            <td>Perdida de comunicacion entre nodos y fallos de heartbeat.</td>
+            <td>Red redundante, switches tolerantes a fallos y enlaces separados.</td>
+          </tr>
+          <tr>
+            <td>Hipervisor y gestion</td>
+            <td>Alta</td>
+            <td>Fallo en administracion, migracion o reinicio de VM.</td>
+            <td>Versiones homogeneas, monitoreo y plan de recuperacion.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page-break">
+      <h2>5. Alternativas HA evaluadas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Alternativa</th>
+            <th>Descripcion</th>
+            <th>Ventajas</th>
+            <th>Limitaciones</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Active-active</td>
+            <td>Dos o mas nodos atienden carga al mismo tiempo.</td>
+            <td>Mayor continuidad, mejor uso de recursos y balanceo.</td>
+            <td>Mayor costo, mas complejidad y requiere sincronizacion robusta.</td>
+            <td><span class="score">Apto</span> para servicios muy criticos.</td>
+          </tr>
+          <tr>
+            <td>Active-passive</td>
+            <td>Un nodo principal opera y otro queda listo para asumir el servicio.</td>
+            <td>Menor complejidad, failover claro y costo moderado.</td>
+            <td>Parte de la capacidad queda en espera.</td>
+            <td><span class="score">Seleccionado</span> como base del cluster HA.</td>
+          </tr>
+          <tr>
+            <td>N+1</td>
+            <td>Existe un nodo adicional para cubrir la caida de uno de los hosts.</td>
+            <td>Buena relacion costo/proteccion y crecimiento sencillo.</td>
+            <td>No cubre multiples fallos simultaneos si no se amplia capacidad.</td>
+            <td><span class="score">Seleccionado</span> como criterio de capacidad minima.</td>
+          </tr>
+          <tr>
+            <td>Solo backup</td>
+            <td>Recuperacion desde copias despues de una interrupcion.</td>
+            <td>Protege datos historicos y permite restauracion.</td>
+            <td>No evita tiempo de inactividad.</td>
+            <td><span class="risk">No suficiente</span> como solucion HA principal.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Arquitectura seleccionada</h2>
+      <div class="decision-box">
+        <strong>Arquitectura HA seleccionada:</strong>
+        Cluster de virtualizacion en modelo active-passive con capacidad N+1, almacenamiento compartido o replicado, red redundante, monitoreo de heartbeat, politicas de reinicio automatico de VM y respaldo programado.
+      </div>
+      <h3>Elementos principales</h3>
+      <ul>
+        <li>Minimo dos hosts fisicos con hipervisor compatible y configuracion homogenea.</li>
+        <li>Cluster HA habilitado para detectar caida de host y ejecutar failover.</li>
+        <li>Almacenamiento compartido o replicado para que las VM puedan iniciarse en otro nodo.</li>
+        <li>Red redundante para trafico de gestion, datos y heartbeat del cluster.</li>
+        <li>Politicas de prioridad para VM criticas: base de datos, procesamiento e IA.</li>
+        <li>Monitoreo, alertas y registro de eventos para validar tiempos RTO/RPO.</li>
+        <li>Backups periodicos como complemento de recuperacion ante perdida de datos.</li>
+      </ul>
+
+      <h2>7. Justificacion tecnica</h2>
+      <p>
+        Se selecciona esta arquitectura porque responde al nivel de criticidad del proyecto sin elevar innecesariamente la complejidad. El modelo active-passive permite que un host secundario asuma la operacion cuando falla el host principal. El criterio N+1 asegura capacidad adicional para absorber la caida de un nodo. El almacenamiento compartido o replicado evita que las maquinas virtuales queden atadas a un unico servidor fisico.
+      </p>
+      <p>
+        Para cargas de ciencia de datos e IA, la continuidad es importante porque los procesos pueden ser largos, costosos y dependientes de datos. Por ello, la solucion prioriza disponibilidad, recuperacion automatica y proteccion de informacion. La arquitectura tambien permite crecimiento futuro: se pueden agregar nodos, mejorar red, diversificar almacenamiento y reforzar monitoreo.
+      </p>
+    </section>
+
+    <section class="page-break">
+      <h2>8. Escenarios de fallo evaluados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Escenario</th>
+            <th>Impacto sin HA</th>
+            <th>Respuesta con arquitectura seleccionada</th>
+            <th>Evidencia esperada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fallo de host fisico</td>
+            <td>VM inactivas y servicios detenidos.</td>
+            <td>Deteccion de heartbeat perdido y reinicio de VM en host disponible.</td>
+            <td>Logs de failover y servicio recuperado.</td>
+          </tr>
+          <tr>
+            <td>Fallo de red</td>
+            <td>Perdida de conectividad o aislamiento de nodos.</td>
+            <td>Uso de enlaces redundantes y alerta de incidente.</td>
+            <td>Registro de alerta y continuidad por enlace alterno.</td>
+          </tr>
+          <tr>
+            <td>Fallo de almacenamiento</td>
+            <td>Perdida de acceso a discos virtuales.</td>
+            <td>Replica, almacenamiento alterno o recuperacion desde backup.</td>
+            <td>Evento registrado y validacion de integridad de datos.</td>
+          </tr>
+          <tr>
+            <td>Fallo de hipervisor</td>
+            <td>VM afectadas en el nodo comprometido.</td>
+            <td>Migracion o reinicio en otro nodo del cluster.</td>
+            <td>Reporte de recuperacion y tiempo de indisponibilidad.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>9. RTO y RPO propuestos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Carga</th>
+            <th>RTO propuesto</th>
+            <th>RPO propuesto</th>
+            <th>Justificacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bases de datos criticas</td>
+            <td>5 a 15 minutos</td>
+            <td>0 a 5 minutos</td>
+            <td>La informacion debe recuperarse con minima perdida.</td>
+          </tr>
+          <tr>
+            <td>Entrenamiento y procesamiento IA</td>
+            <td>15 a 30 minutos</td>
+            <td>Segun checkpoint del proceso</td>
+            <td>Los trabajos pueden reanudarse desde puntos guardados.</td>
+          </tr>
+          <tr>
+            <td>Visualizacion y reportes</td>
+            <td>30 a 60 minutos</td>
+            <td>Hasta ultimo respaldo valido</td>
+            <td>Impacto medio; puede recuperarse de forma planificada.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. Plan de implementacion</h2>
+      <ol>
+        <li>Inventariar maquinas virtuales, servicios y dependencias.</li>
+        <li>Clasificar cargas segun criticidad, RTO y RPO.</li>
+        <li>Preparar hosts fisicos compatibles y red redundante.</li>
+        <li>Configurar almacenamiento compartido o replica de discos.</li>
+        <li>Crear el cluster HA y habilitar politicas de failover.</li>
+        <li>Asignar prioridad de reinicio a VM criticas.</li>
+        <li>Ejecutar pruebas de fallo controladas: host, red, storage e hipervisor.</li>
+        <li>Registrar resultados, tiempos de recuperacion y acciones correctivas.</li>
+      </ol>
+
+      <h2>11. Conclusion</h2>
+      <p>
+        La arquitectura seleccionada cumple con el objetivo de planificar alta disponibilidad y tolerancia de fallos para el proyecto HT09. La evaluacion demuestra que no basta con realizar backups: se necesita un cluster HA con capacidad N+1, almacenamiento accesible por nodos alternos, red redundante y monitoreo. Esta combinacion permite reducir interrupciones, recuperar maquinas virtuales criticas y sostener servicios de ciencia de datos e inteligencia artificial ante fallos controlados.
+      </p>
+      <p class="footer-note">
+        Este reporte sirve como evidencia de que se evaluo, selecciono y justifico una arquitectura HA para el caso practico "Planifica alta disponibilidad y tolerancia de fallos".
+      </p>
+    </section>
+  </body>
+</html>
