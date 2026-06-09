@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrante 1 | HT-09</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="member-page-body">
+    <main class="single-member-page member-profile-page">
+      <a class="back-link" href="index.html#exposicion">← VOLVER AL PROYECTO</a>
+
+      <section class="member-profile-shell">
+        <aside class="member-sidebar">
+          <img src="integrante1.png" alt="Fotografia del integrante 1" />
+          <div class="member-side-label">Integrante</div>
+          <strong class="member-side-number">01</strong>
+          <div class="member-side-rule"></div>
+          <div class="member-side-meta">
+            <div><span>ROL</span><p><strong>Rol en el proyecto</strong><small>Integrante del equipo</small></p></div>
+            <div><span>AP</span><p><strong>Aporte principal</strong><small>Contexto y objetivo</small></p></div>
+            <div><span>FE</span><p><strong>Fecha</strong><small>Mayo 2025</small></p></div>
+          </div>
+        </aside>
+
+        <article class="member-main">
+          <div class="member-kicker"><span>Integrante 01</span><i></i></div>
+          <h1 class="member-page-title">Caso practico, objetivo y <span>problema central</span></h1>
+          <p class="member-summary">
+            Este integrante abre la exposicion. Debe explicar que la tarea HT-09 busca planificar alta disponibilidad y tolerancia de fallos para servidores virtualizados usados en ciencia de datos e inteligencia artificial.
+          </p>
+
+          <div class="member-analysis-card">
+            <div class="analysis-icon">01</div>
+            <div>
+              <h4>Caso analitico</h4>
+              <p>"Nuestro caso practico trata sobre un laboratorio de ciencia de datos e inteligencia artificial. En este entorno existen cargas criticas como bases de datos, modelos de entrenamiento y procesamiento por lotes. Si un servidor falla, estas cargas pueden detenerse y afectar la continuidad del servicio. Por eso se plantea una arquitectura de alta disponibilidad y tolerancia de fallos."</p>
+            </div>
+          </div>
+
+          <div class="member-info-list">
+            <div class="member-info-row"><div class="member-info-icon">A</div><strong>Parte</strong><span>Introduccion general antes de las operaciones.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">B</div><strong>Tema</strong><span>Laboratorio de infraestructura para datos e IA.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">C</div><strong>Debe plantear</strong><span>Que servicios son criticos y que ocurriria si se detienen.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">D</div><strong>Relacion con HT-09</strong><span>Explica por que se necesita alta disponibilidad antes de elegir opciones, configurar cluster y simular fallos.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="member-dashboard">
+        <div class="dashboard-status">Integrante 01</div>
+        <div class="dashboard-grid">
+          <section class="dash-card">
+            <h2 class="dash-title">Grafico del problema central</h2>
+            <div class="dash-bars">
+              <div class="dash-bar" style="--value: 92%"><span>Bases de datos</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 86%"><span>Entrenamiento IA</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 74%"><span>Procesamiento por lotes</span><strong>Alto</strong></div>
+              <div class="dash-bar" style="--value: 58%"><span>Visualizacion</span><strong>Medio</strong></div>
+            </div>
+            <div class="dash-tags">
+              <div class="dash-tag"><strong>Carga critica</strong><span>Riesgo de falla elevado.</span></div>
+              <div class="dash-tag"><strong>Fallo posible</strong><span>Puede ocurrir bajo presion.</span></div>
+              <div class="dash-tag"><strong>Interrupcion</strong><span>Impacto en operaciones.</span></div>
+              <div class="dash-tag"><strong>Necesidad de HA</strong><span>Requiere alta disponibilidad.</span></div>
+            </div>
+          </section>
+          <section class="dash-card explanation-card">
+            <h2 class="dash-title">Explicacion</h2>
+            <p>El problema central se concentra en la alta demanda de recursos en cargas criticas como bases de datos y entrenamiento de IA. La falta de alta disponibilidad puede causar fallos que impacten directamente el servicio.</p>
+            <div class="dash-quote">El objetivo es garantizar la continuidad del servicio mediante una arquitectura resiliente, escalable y tolerante a fallos.</div>
+          </section>
+        </div>
+
+        <section class="dash-card simulator dashboard-sim" data-sim="intro">
+          <h2 class="dash-title">Simulacion: impacto de una caida sin HA</h2>
+          <p>Presiona el boton para comparar que ocurre cuando una carga critica falla sin alta disponibilidad y cuando el entorno cuenta con HA.</p>
+          <div class="sim-layout">
+            <div>
+              <div class="impact-sim-lab">
+                <div class="service-core"><span class="core-ring"></span><strong>Servicio IA</strong><small>Procesamiento critico</small></div>
+                <div class="traffic-lines"><span></span><span></span><span></span></div>
+                <div class="user-panel"><span>Usuarios</span><strong>Operativo</strong></div>
+                <div class="impact-metrics">
+                  <article><span>Disponibilidad</span><strong data-metric="availability">99%</strong><small>Sin HA cae a 0%</small></article>
+                  <article><span>Interrupcion</span><strong data-metric="downtime">0 min</strong><small>Con HA es 0 min</small></article>
+                  <article><span>Continuidad</span><strong data-metric="continuity">Alta</strong><small>Con HA se mantiene</small></article>
+                </div>
+              </div>
+            </div>
+            <aside class="sim-control-panel">
+              <h3>Estado inicial</h3>
+              <p>Servicio operativo. Todos los sistemas funcionando correctamente.</p>
+              <button class="sim-button" type="button">Ejecutar simulacion</button>
+              <div class="sim-result">Estado inicial: servicio operativo.</div>
+              <div class="sim-terminal" aria-live="polite">
+                <div class="terminal-header"><span></span><span></span><span></span><strong>terminal HT-09</strong></div>
+                <pre data-terminal>[00:00] Sistema listo. Esperando ejecucion de simulacion...</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Resultados de la simulacion</h2>
+          <div class="result-grid">
+            <div class="result-box warning"><strong>Sin alta disponibilidad</strong><ul><li>Servicio inactivo</li><li>Interrupcion total</li><li>Perdida de datos en curso</li><li>Impacto alto en usuarios</li></ul><span class="impact-label">Impacto: critico</span></div>
+            <div class="result-box"><strong>Con alta disponibilidad</strong><ul><li>Conmutacion automatica</li><li>Sin interrupciones</li><li>Datos protegidos</li><li>Impacto minimo en usuarios</li></ul><span class="impact-label">Impacto: bajo</span></div>
+            <div class="result-box"><strong>Conclusion</strong><ul><li>Implementar HA es esencial.</li><li>Reduce interrupciones.</li><li>Protege cargas criticas de IA.</li></ul></div>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Siguientes pasos</h2>
+          <div class="next-steps">
+            <div class="step-box"><strong>1. Disenar</strong><span>Arquitectura HA adaptada a cargas criticas.</span></div>
+            <div class="step-box"><strong>2. Configurar</strong><span>Cluster, balanceo y replica de servicios.</span></div>
+            <div class="step-box"><strong>3. Probar</strong><span>Pruebas de failover y recuperacion.</span></div>
+            <div class="step-box"><strong>4. Monitorear</strong><span>Alertas para deteccion temprana.</span></div>
+            <div class="step-box"><strong>5. Optimizar</strong><span>Escalar segun demanda.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="member-actions">
+        <a href="index.html#exposicion">Volver al indice</a>
+        <a href="integrante-2.html">Siguiente integrante</a>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

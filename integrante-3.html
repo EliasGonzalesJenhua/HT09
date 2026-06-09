@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrante 3 | HT-09</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="member-page-body">
+    <main class="single-member-page member-profile-page">
+      <a class="back-link" href="index.html#exposicion">← VOLVER AL PROYECTO</a>
+
+      <section class="member-profile-shell">
+        <aside class="member-sidebar">
+          <img src="integrante3.png" alt="Fotografia del integrante 3" />
+          <div class="member-side-label">Integrante</div>
+          <strong class="member-side-number">03</strong>
+          <div class="member-side-rule"></div>
+          <div class="member-side-meta">
+            <div><span>ROL</span><p><strong>Rol en el proyecto</strong><small>Revision tecnica</small></p></div>
+            <div><span>AP</span><p><strong>Aporte principal</strong><small>Componentes criticos</small></p></div>
+            <div><span>FE</span><p><strong>Fecha</strong><small>Mayo 2025</small></p></div>
+          </div>
+        </aside>
+
+        <article class="member-main">
+          <div class="member-kicker"><span>Integrante 03</span><i></i></div>
+          <h1 class="member-page-title">Componentes criticos y <span>puntos de fallo</span></h1>
+          <p class="member-summary">
+            Este integrante complementa la Operacion 01 identificando que componentes necesitan mayor prioridad dentro del laboratorio.
+          </p>
+
+          <div class="member-analysis-card">
+            <div class="analysis-icon">03</div>
+            <div>
+              <h4>Trabajo que va a leer</h4>
+              <p>"Dentro de la Operacion 01 tambien se deben clasificar los componentes criticos. En este entorno se consideran criticas las maquinas virtuales de procesamiento, las bases de datos, el almacenamiento y los servicios que apoyan el entrenamiento de modelos. Luego se identifican puntos de fallo como el host fisico, la red, el almacenamiento compartido y el hipervisor."</p>
+            </div>
+          </div>
+
+          <div class="member-info-list">
+            <div class="member-info-row"><div class="member-info-icon">A</div><strong>Operacion</strong><span>Operacion 01: clasificacion de componentes y puntos de fallo.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">B</div><strong>Critico</strong><span>Bases de datos, modelos de entrenamiento, VM de procesamiento y almacenamiento.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">C</div><strong>Medio</strong><span>Servicios de visualizacion, reportes y herramientas auxiliares.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">D</div><strong>Fallo</strong><span>Host fisico, red, almacenamiento compartido, hipervisor y gestion del cluster.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="member-dashboard">
+        <div class="dashboard-status">Integrante 03</div>
+        <div class="dashboard-grid">
+          <section class="dash-card">
+            <h2 class="dash-title">Mapa de criticidad</h2>
+            <div class="dash-bars">
+              <div class="dash-bar" style="--value: 96%"><span>Almacenamiento</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 92%"><span>Base de datos</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 72%"><span>Red del cluster</span><strong>Alto</strong></div>
+              <div class="dash-bar" style="--value: 48%"><span>Reportes</span><strong>Medio</strong></div>
+            </div>
+            <div class="dash-tags">
+              <div class="dash-tag"><strong>VM</strong><span>Cargas de procesamiento.</span></div>
+              <div class="dash-tag"><strong>Datos</strong><span>Informacion sensible.</span></div>
+              <div class="dash-tag"><strong>Red</strong><span>Comunicacion entre nodos.</span></div>
+              <div class="dash-tag"><strong>Storage</strong><span>Discos usados por VM.</span></div>
+            </div>
+          </section>
+          <section class="dash-card explanation-card">
+            <h2 class="dash-title">Explicacion</h2>
+            <p>La criticidad se define segun impacto, dependencia y tiempo de recuperacion. Si un componente detiene bases de datos o entrenamiento IA, debe recibir prioridad HA.</p>
+            <div class="dash-quote">Identificar componentes criticos evita proteger todo por igual y permite invertir donde el impacto es mayor.</div>
+          </section>
+        </div>
+
+        <section class="dash-card simulator dashboard-sim" data-sim="risk">
+          <h2 class="dash-title">Simulacion: medicion de criticidad</h2>
+          <p>Selecciona un componente y observa el nivel de riesgo que registra el entorno.</p>
+          <div class="sim-layout">
+            <div>
+              <div class="sim-option-row">
+                <button class="sim-button" type="button" data-component="database">Base de datos</button>
+                <button class="sim-button" type="button" data-component="network">Red</button>
+                <button class="sim-button" type="button" data-component="storage">Almacenamiento</button>
+                <button class="sim-button" type="button" data-component="reports">Reportes</button>
+              </div>
+              <div class="risk-sim-lab" data-active="database">
+                <div class="risk-radar">
+                  <span class="radar-point point-db"></span>
+                  <span class="radar-point point-net"></span>
+                  <span class="radar-point point-storage"></span>
+                  <span class="radar-point point-report"></span>
+                </div>
+                <div class="risk-meter"><strong style="width: 0%">0%</strong></div>
+              </div>
+            </div>
+            <aside class="sim-control-panel">
+              <h3>Monitor de riesgo</h3>
+              <p>El terminal registra que componente se analiza y si requiere proteccion de alta disponibilidad.</p>
+              <div class="sim-result">Selecciona un componente para calcular su criticidad.</div>
+              <div class="sim-terminal" aria-live="polite">
+                <div class="terminal-header"><span></span><span></span><span></span><strong>terminal HT-09</strong></div>
+                <pre data-terminal>[00:00] Sistema listo. Esperando analisis de componente...</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Resultados de clasificacion</h2>
+          <div class="result-grid">
+            <div class="result-box"><strong>Critico</strong><ul><li>Bases de datos.</li><li>Almacenamiento.</li><li>Entrenamiento IA.</li></ul><span class="impact-label">Prioridad HA</span></div>
+            <div class="result-box"><strong>Medio</strong><ul><li>Reportes.</li><li>Visualizacion.</li><li>Servicios auxiliares.</li></ul><span class="impact-label">Recuperacion planificada</span></div>
+            <div class="result-box warning"><strong>Puntos de fallo</strong><ul><li>Host fisico.</li><li>Red.</li><li>Hipervisor.</li><li>Storage compartido.</li></ul></div>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Siguientes pasos</h2>
+          <div class="next-steps">
+            <div class="step-box"><strong>1. Listar</strong><span>Componentes del entorno.</span></div>
+            <div class="step-box"><strong>2. Medir</strong><span>Impacto por interrupcion.</span></div>
+            <div class="step-box"><strong>3. Priorizar</strong><span>Cargas criticas.</span></div>
+            <div class="step-box"><strong>4. Relacionar</strong><span>Puntos de fallo.</span></div>
+            <div class="step-box"><strong>5. Evidenciar</strong><span>Mapa de componentes.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="member-actions">
+        <a href="integrante-2.html">Anterior</a>
+        <a href="index.html#exposicion">Volver al indice</a>
+        <a href="integrante-4.html">Siguiente integrante</a>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

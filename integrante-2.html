@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrante 2 | HT-09</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="member-page-body">
+    <main class="single-member-page member-profile-page">
+      <a class="back-link" href="index.html#exposicion">← VOLVER AL PROYECTO</a>
+
+      <section class="member-profile-shell">
+        <aside class="member-sidebar">
+          <img src="integrante2.png" alt="Fotografia del integrante 2" />
+          <div class="member-side-label">Integrante</div>
+          <strong class="member-side-number">02</strong>
+          <div class="member-side-rule"></div>
+          <div class="member-side-meta">
+            <div><span>ROL</span><p><strong>Rol en el proyecto</strong><small>Analisis de alternativas</small></p></div>
+            <div><span>AP</span><p><strong>Aporte principal</strong><small>Opciones HA</small></p></div>
+            <div><span>FE</span><p><strong>Fecha</strong><small>Mayo 2025</small></p></div>
+          </div>
+        </aside>
+
+        <article class="member-main">
+          <div class="member-kicker"><span>Integrante 02</span><i></i></div>
+          <h1 class="member-page-title">Operacion 01: opciones de <span>alta disponibilidad</span></h1>
+          <p class="member-summary">
+            Este integrante explica las alternativas de alta disponibilidad que se pueden aplicar al entorno virtualizado.
+          </p>
+
+          <div class="member-analysis-card">
+            <div class="analysis-icon">02</div>
+            <div>
+              <h4>Trabajo que va a leer</h4>
+              <p>"En la Operacion 01 se identifican las opciones de alta disponibilidad. Primero se revisa que mecanismos soporta la plataforma de virtualizacion. Luego se comparan alternativas como active-active, active-passive y N+1. La eleccion depende de la criticidad del servicio, el costo, la complejidad y el nivel de proteccion requerido."</p>
+            </div>
+          </div>
+
+          <div class="member-info-list">
+            <div class="member-info-row"><div class="member-info-icon">A</div><strong>Operacion</strong><span>Operacion 01: identifica las opciones de alta disponibilidad.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">B</div><strong>Active-active</strong><span>Dos nodos trabajan al mismo tiempo y reparten la carga. Recomendado para servicios muy criticos.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">C</div><strong>Active-passive</strong><span>Un nodo atiende y otro queda listo para asumir el servicio si ocurre un fallo.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">D</div><strong>N+1</strong><span>Un nodo adicional cubre la caida de uno de los hosts del cluster.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="member-dashboard">
+        <div class="dashboard-status">Integrante 02</div>
+        <div class="dashboard-grid">
+          <section class="dash-card">
+            <h2 class="dash-title">Comparativa de opciones HA</h2>
+            <div class="dash-bars">
+              <div class="dash-bar" style="--value: 96%"><span>Active-active</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 78%"><span>Active-passive</span><strong>Alto</strong></div>
+              <div class="dash-bar" style="--value: 68%"><span>N+1</span><strong>Medio</strong></div>
+              <div class="dash-bar" style="--value: 58%"><span>Replica y balanceo</span><strong>Soporte</strong></div>
+            </div>
+            <div class="dash-tags">
+              <div class="dash-tag"><strong>Costo</strong><span>Active-active exige mayor inversion.</span></div>
+              <div class="dash-tag"><strong>Proteccion</strong><span>Depende de la criticidad.</span></div>
+              <div class="dash-tag"><strong>Complejidad</strong><span>Mayor HA requiere mas gestion.</span></div>
+              <div class="dash-tag"><strong>Decision</strong><span>Se justifica tecnicamente.</span></div>
+            </div>
+          </section>
+          <section class="dash-card explanation-card">
+            <h2 class="dash-title">Explicacion</h2>
+            <p>La seleccion de HA compara continuidad, costo y complejidad. Para datos e IA, las cargas mas criticas se protegen con opciones que permitan conmutacion rapida.</p>
+            <div class="dash-quote">La opcion correcta no es la mas cara, sino la que protege el servicio segun su criticidad real.</div>
+          </section>
+        </div>
+
+        <section class="dash-card simulator dashboard-sim" data-sim="options">
+          <h2 class="dash-title">Simulacion: seleccion de opcion HA</h2>
+          <p>Elige una opcion y observa como cambia la estrategia de proteccion del servicio.</p>
+          <div class="sim-layout">
+            <div>
+              <div class="sim-option-row">
+                <button class="sim-button" type="button" data-option="active-active">Active-active</button>
+                <button class="sim-button" type="button" data-option="active-passive">Active-passive</button>
+                <button class="sim-button" type="button" data-option="n1">N+1</button>
+              </div>
+              <div class="ha-choice-lab">
+                <div class="choice-node node-a">Host A</div>
+                <div class="choice-balance">Carga IA</div>
+                <div class="choice-node node-b">Host B</div>
+                <div class="choice-standby">Reserva</div>
+              </div>
+            </div>
+            <aside class="sim-control-panel">
+              <h3>Analizador HA</h3>
+              <p>Registra la opcion seleccionada, su respuesta y el nivel de continuidad esperado.</p>
+              <div class="sim-result">Selecciona una alternativa para analizar su respuesta.</div>
+              <div class="sim-terminal" aria-live="polite">
+                <div class="terminal-header"><span></span><span></span><span></span><strong>terminal HT-09</strong></div>
+                <pre data-terminal>[00:00] Sistema listo. Esperando seleccion de opcion HA...</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Resultados esperados</h2>
+          <div class="result-grid">
+            <div class="result-box"><strong>Active-active</strong><ul><li>Ambos nodos activos.</li><li>Mayor continuidad.</li><li>Mayor costo y gestion.</li></ul><span class="impact-label">Uso: servicios criticos</span></div>
+            <div class="result-box"><strong>Active-passive</strong><ul><li>Un nodo en espera.</li><li>Conmutacion al detectar fallo.</li><li>Costo moderado.</li></ul><span class="impact-label">Uso: respaldo rapido</span></div>
+            <div class="result-box"><strong>N+1</strong><ul><li>Nodo extra disponible.</li><li>Absorbe caida de host.</li><li>Buena relacion costo/proteccion.</li></ul></div>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Siguientes pasos</h2>
+          <div class="next-steps">
+            <div class="step-box"><strong>1. Inventariar</strong><span>Servicios protegidos.</span></div>
+            <div class="step-box"><strong>2. Clasificar</strong><span>Criticidad por impacto.</span></div>
+            <div class="step-box"><strong>3. Comparar</strong><span>Costo, riesgo y respuesta.</span></div>
+            <div class="step-box"><strong>4. Elegir</strong><span>Opcion HA justificada.</span></div>
+            <div class="step-box"><strong>5. Documentar</strong><span>Decision tecnica final.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="member-actions">
+        <a href="integrante-1.html">Anterior</a>
+        <a href="index.html#exposicion">Volver al indice</a>
+        <a href="integrante-3.html">Siguiente integrante</a>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

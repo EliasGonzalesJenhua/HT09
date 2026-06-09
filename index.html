@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tarea HT-09 | Alta disponibilidad</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#principal" aria-label="Ir al inicio">
+        <span>virtualiza</span><strong>cion</strong>
+      </a>
+      <nav class="nav icon-nav" aria-label="Navegacion principal">
+        <a href="#principal" aria-label="Menu principal" title="Menu principal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 3l9 8.2v9.3a.8.8 0 0 1-.8.8h-5.3v-6.4H9.1v6.4H3.8a.8.8 0 0 1-.8-.8v-9.3Z"/></svg>
+        </a>
+        <a href="#exposicion" aria-label="Integrantes" title="Integrantes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 12.1c2.2 0 3.8-1.7 3.8-4S10.4 4 8.2 4 4.4 5.8 4.4 8.1s1.6 4 3.8 4Zm7.7.1c1.9 0 3.3-1.5 3.3-3.5s-1.4-3.5-3.3-3.5-3.3 1.5-3.3 3.5 1.4 3.5 3.3 3.5ZM8.2 13.4c-3.5 0-6.2 2-6.2 4.6v1.3c0 .4.3.7.7.7h11c.4 0 .7-.3.7-.7V18c0-2.6-2.7-4.6-6.2-4.6Zm7.7.3c-.8 0-1.6.1-2.3.4 1.4 1 2.3 2.3 2.3 3.9V20h5.4c.4 0 .7-.3.7-.7v-1c0-2.6-2.5-4.6-6.1-4.6Z"/></svg>
+        </a>
+        <a href="#operaciones" aria-label="Arquitectura" title="Arquitectura">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h4.6V5.8h6.8v1.7H20v4.6h-4.6v-1.5h-2.3v4.8h2.3v-1.5H20v4.6h-4.6v-1.7H8.6v1.7H4v-4.6h4.6v1.5h2.3v-4.8H8.6v1.5H4V7.5Z"/></svg>
+        </a>
+        <a href="#escenarios" aria-label="Comparativas y graficos" title="Comparativas y graficos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c.6 0 1 .4 1 1v14c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1Zm2.2 11.8h2.3v-4.4H6.2v4.4Zm4.2 0h2.3V8.1h-2.3v7.7Zm4.2 0h2.3v-5.6h-2.3v5.6ZM6.1 7.2v1.7h11.8V7.2H6.1Z"/></svg>
+        </a>
+        <a href="#retroalimentacion" aria-label="Informacion y preguntas" title="Informacion y preguntas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 1 0 0 18.4 9.2 9.2 0 0 0 0-18.4Zm1.3 14.2h-2.5v-6.4h2.5V17Zm0-7.8h-2.5V6.8h2.5v2.4Z"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section id="principal" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Curso PICD-714</p>
+          <h1>Planifica alta disponibilidad y tolerancia de fallos</h1>
+          <p>
+            Es fundamental para garantizar que los sistemas criticos sigan
+            operativos sin interrupciones. Mientras que la alta disponibilidad
+            minimiza el tiempo de inactividad, la tolerancia a fallos asegura
+            una operacion continua y sin fallos ante cualquier componente
+            danado. [1, 2]
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#exposicion">Ver Exposicion <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <span class="orbit orbit-one" aria-hidden="true"></span>
+          <span class="orbit orbit-two" aria-hidden="true"></span>
+          <span class="data-rain" aria-hidden="true"></span>
+          <img
+            src="itdo-como-fallas-escalabilidad-removebg-preview.png"
+            alt="Servidor con nube digital representando escalabilidad, alta disponibilidad y tolerancia de fallos"
+          />
+        </figure>
+      </section>
+
+      <section id="virtualizacion-spotlight" class="virtualizacion-spotlight" ontouchstart="">
+        <svg class="spotlight-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 450" aria-label="Animacion de virtualizacion">
+          <defs>
+            <linearGradient id="spotlightLight" x1="50%" y1="100%" x2="50%" y2="0%">
+              <stop offset="60%" stop-color="rgba(111,255,0,0.28)" />
+              <stop offset="82%" stop-color="rgba(255,255,255,0)" />
+            </linearGradient>
+
+            <filter id="spotlightBlur">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+            </filter>
+
+            <radialGradient id="spotlightGradientMask" cx="50%" cy="38%" r="62%" fx="50%" fy="50%">
+              <stop offset="40%" stop-color="#fff" />
+              <stop offset="60%" stop-color="rgba(255,255,255,0.2)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+            </radialGradient>
+
+            <mask id="spotlightMaskStrokeShow">
+              <ellipse class="spotlight-rotate" fill="url(#spotlightGradientMask)" cx="640" cy="154.9" rx="148.7" ry="129.9" transform="translate(-0.3 1.4)" />
+            </mask>
+
+            <mask id="spotlightMaskHideFill">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              <ellipse class="spotlight-rotate" cx="640" cy="146.8" rx="149" ry="129.9" transform="translate(-0.3 1.4)" fill="black" />
+            </mask>
+
+            <path id="spotlightTextArc" d="M170,230 Q640,60 1110,230" />
+
+            <g id="spotlightWords">
+              <text font-family="Montserrat, Arial, sans-serif" font-size="90" font-weight="700" letter-spacing="4">
+                <textPath href="#spotlightTextArc" startOffset="50%" text-anchor="middle">
+                  VIRTUALIZACION
+                </textPath>
+              </text>
+            </g>
+          </defs>
+
+          <use href="#spotlightWords" class="spotlight-words-fill" mask="url(#spotlightMaskHideFill)" />
+          <g id="spotlightReflector" class="spotlight-rotate" filter="url(#spotlightBlur)">
+            <polygon fill="url(#spotlightLight)" points="491.3 155.2 595.8 908.4 688.7 908.2 788.7 154.5 491.3 155.2" />
+            <ellipse fill="rgba(255,255,255,0.15)" cx="640" cy="154.9" rx="148.7" ry="129.9" transform="translate(-0.3 1.4)" />
+          </g>
+          <use href="#spotlightWords" mask="url(#spotlightMaskStrokeShow)" class="spotlight-words-stroke" />
+        </svg>
+
+        <button class="spotlight-hide" type="button">Ocultar reflector</button>
+        <div class="spotlight-info">Adaptado a la tecnologia Armando Jenhua</div>
+      </section>
+
+      <section id="objetivo" class="section split objective-showcase">
+        <p class="lead">
+          Al concluir la tarea, el participante podra evaluar los requisitos de
+          disponibilidad de un entorno de ciencia de datos e IA, seleccionar
+          opciones apropiadas, establecer un cluster funcional y disenar
+          escenarios de tolerancia de fallos que aseguren continuidad operativa
+          y reduzcan el tiempo de inactividad.
+        </p>
+        <div>
+          <p class="eyebrow">Objetivo de la Tarea</p>
+          <h2>Evaluar, seleccionar y justificar una arquitectura HA</h2>
+        </div>
+      </section>
+
+      <section class="section case-band">
+        <div class="case-text">
+          <p class="eyebrow">Caso practico</p>
+          <h2>Laboratorio de infraestructura para datos e IA</h2>
+          <p>
+            El equipo responsable detecto cargas criticas como procesamiento en
+            lote, modelos de entrenamiento y bases de datos de apoyo. Estas
+            cargas pueden verse afectadas por fallos de hardware o
+            actualizaciones inesperadas, por lo que se requiere una estrategia
+            de alta disponibilidad y tolerancia de fallos para servidores
+            virtualizados.
+          </p>
+        </div>
+        <div class="stat-grid" aria-label="Resultados esperados">
+          <div>
+            <strong>3</strong>
+            <span>operaciones</span>
+          </div>
+          <div>
+            <strong>2+</strong>
+            <span>hosts fisicos</span>
+          </div>
+          <div>
+            <strong>HA</strong>
+            <span>cluster funcional</span>
+          </div>
+          <div>
+            <strong>RTO/RPO</strong>
+            <span>analisis de fallos</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section materials-section">
+        <div class="section-heading">
+          <p class="eyebrow">Materiales</p>
+          <h2>Recursos sugeridos para el laboratorio</h2>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <span class="resource-icon">01</span>
+            <h3>Virtualizacion</h3>
+            <p>Entorno con al menos dos nodos fisicos o hosts.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-icon">02</span>
+            <h3>Almacenamiento</h3>
+            <p>SAN/NAS compartido o recurso de almacenamiento replicado.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-icon">03</span>
+            <h3>Gestion HA</h3>
+            <p>Software de gestion de cluster o herramienta HA del hipervisor.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-icon">04</span>
+            <h3>Monitoreo</h3>
+            <p>Herramienta para estado del cluster y pruebas de failover.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section planning">
+        <div class="section-heading">
+          <p class="eyebrow">Que se necesita plantear</p>
+          <h2>Guia para explicar la tarea</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Parte</th>
+                <th>Que se debe identificar</th>
+                <th>Que se debe explicar</th>
+                <th>Evidencia esperada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Entorno</td>
+                <td>Hosts, maquinas virtuales, red, almacenamiento y servicios criticos.</td>
+                <td>Por que el laboratorio de datos e IA necesita continuidad operativa.</td>
+                <td>Inventario de componentes y diagrama general.</td>
+              </tr>
+              <tr>
+                <td>Disponibilidad</td>
+                <td>Opciones active-active, active-passive, N+1, replicacion y balanceo.</td>
+                <td>Ventajas, limitaciones, costo y nivel de proteccion de cada opcion.</td>
+                <td>Tabla comparativa y decision justificada.</td>
+              </tr>
+              <tr>
+                <td>Cluster</td>
+                <td>Requisitos para crear el cluster HA con dos o mas hosts.</td>
+                <td>Como se habilita HA y como se asignan VM criticas al cluster.</td>
+                <td>Capturas o descripcion de configuracion.</td>
+              </tr>
+              <tr>
+                <td>Fallos</td>
+                <td>Puntos de fallo en host, red, almacenamiento, cluster e hipervisor.</td>
+                <td>Proceso de deteccion, failover, notificacion, recuperacion, RTO y RPO.</td>
+                <td>Escenarios simulados y recomendaciones de mejora.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="operaciones" class="section operations">
+        <div class="section-heading">
+          <p class="eyebrow">Desarrollo de la practica</p>
+          <h2>Operaciones</h2>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Operaciones de la tarea">
+          <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="op1">Operacion 01</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="op2">Operacion 02</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="op3">Operacion 03</button>
+        </div>
+
+        <article class="operation-panel active" id="op1" role="tabpanel">
+          <div class="operation-copy">
+            <h3>Identifica las opciones de alta disponibilidad</h3>
+            <ol>
+              <li>Revisar la plataforma de virtualizacion y sus mecanismos HA: active-active, active-passive, N+1 u otros.</li>
+              <li>Clasificar componentes criticos: maquinas virtuales, bases de datos, servicios de visualizacion y almacenamiento.</li>
+              <li>Mapear puntos de fallo: host fisico, almacenamiento, red y software de virtualizacion.</li>
+              <li>Elegir la opcion HA adecuada segun impacto, coste y complejidad.</li>
+              <li>Documentar la seleccion con justificacion tecnica, ventajas y limitaciones.</li>
+            </ol>
+            <div class="mini-table">
+              <h4>Vista de analisis</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Opcion HA</th>
+                    <th>Uso recomendado</th>
+                    <th>Explicacion breve</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Active-active</td>
+                    <td>Bases de datos o servicios de IA criticos.</td>
+                    <td>Ambos nodos trabajan al mismo tiempo y reparten la carga.</td>
+                  </tr>
+                  <tr>
+                    <td>Active-passive</td>
+                    <td>Servicios importantes con presupuesto moderado.</td>
+                    <td>Un nodo atiende y otro queda listo para asumir si ocurre un fallo.</td>
+                  </tr>
+                  <tr>
+                    <td>N+1</td>
+                    <td>Conjunto de VM con necesidad de respaldo comun.</td>
+                    <td>Se agrega un nodo extra para cubrir la caida de uno de los hosts.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure>
+            <img src="pdf_pages/page-03-image-01.png" alt="Comparacion entre cluster activo-activo y activo-pasivo" />
+          </figure>
+        </article>
+
+        <article class="operation-panel" id="op2" role="tabpanel" hidden>
+          <div class="operation-copy">
+            <h3>Configura el cluster</h3>
+            <ol>
+              <li>Instalar o configurar el hipervisor en dos o mas hosts fisicos.</li>
+              <li>Configurar almacenamiento compartido o replicado para las maquinas virtuales HA.</li>
+              <li>Crear el cluster virtual, agregar hosts y habilitar HA en la consola de gestion.</li>
+              <li>Asignar roles de cluster a las maquinas virtuales criticas.</li>
+              <li>Probar el cluster simulando fallo de host o desconexion.</li>
+            </ol>
+            <div class="mini-table">
+              <h4>Requisitos de configuracion</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Elemento</th>
+                    <th>Necesidad</th>
+                    <th>Motivo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hosts</td>
+                    <td>Minimo 2 nodos fisicos.</td>
+                    <td>Permiten mover VM si uno falla.</td>
+                  </tr>
+                  <tr>
+                    <td>Red</td>
+                    <td>Conexion estable y preferiblemente redundante.</td>
+                    <td>Evita aislamiento del cluster y perdida de comunicacion.</td>
+                  </tr>
+                  <tr>
+                    <td>Almacenamiento</td>
+                    <td>SAN/NAS compartido o discos replicados.</td>
+                    <td>Las VM deben estar disponibles para el host que asuma el servicio.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure>
+            <img src="pdf_pages/page-04-image-01.jpg" alt="Arquitectura de alta disponibilidad con balanceador, cluster principal, cluster standby y almacenamiento" />
+          </figure>
+        </article>
+
+        <article class="operation-panel" id="op3" role="tabpanel" hidden>
+          <div class="operation-copy">
+            <h3>Disena escenarios de fallos</h3>
+            <ol>
+              <li>Documentar fallos posibles: host, almacenamiento, red, cluster o hipervisor.</li>
+              <li>Definir respuesta: deteccion automatica, failover, notificacion y recuperacion.</li>
+              <li>Estimar RTO y RPO de cada escenario segun criticidad.</li>
+              <li>Simular un fallo y medir comportamiento del cluster.</li>
+              <li>Proponer mejoras: mas nodos, almacenamiento diverso, topologia de red y mantenimiento preventivo.</li>
+            </ol>
+            <div class="mini-table">
+              <h4>Plantilla de escenario</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fallo</th>
+                    <th>Respuesta esperada</th>
+                    <th>Indicador</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Host fisico</td>
+                    <td>Failover de VM hacia otro host.</td>
+                    <td>RTO bajo y servicio restaurado.</td>
+                  </tr>
+                  <tr>
+                    <td>Red</td>
+                    <td>Uso de enlace alterno o alerta de perdida.</td>
+                    <td>Latencia, paquetes perdidos y continuidad.</td>
+                  </tr>
+                  <tr>
+                    <td>Almacenamiento</td>
+                    <td>Acceso mediante replica o ruta secundaria.</td>
+                    <td>RPO aceptable y datos disponibles.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure>
+            <img src="pdf_pages/page-06-image-01.jpg" alt="Proceso de failover cuando falla un host y las maquinas virtuales migran a otro host" />
+          </figure>
+        </article>
+      </section>
+
+      <section id="escenarios" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Analisis de fallos</p>
+          <h2>Escenarios <span>recomendados para</span> documentar</h2>
+        </div>
+        <div class="scenario-grid">
+          <article class="scenario-card">
+            <h3>Fallo de host fisico</h3>
+            <p>Las VM criticas reinician o migran automaticamente a otro nodo del cluster.</p>
+            <dl>
+              <div><dt>Respuesta</dt><dd>Failover automatico</dd></div>
+              <div><dt>Riesgo</dt><dd>Capacidad insuficiente en nodos restantes</dd></div>
+            </dl>
+          </article>
+          <article class="scenario-card">
+            <h3>Fallo de almacenamiento</h3>
+            <p>Se valida si el recurso compartido o replicado mantiene acceso a discos de VM.</p>
+            <dl>
+              <div><dt>Respuesta</dt><dd>Replica o ruta alternativa</dd></div>
+              <div><dt>Riesgo</dt><dd>Perdida de datos si el RPO no esta definido</dd></div>
+            </dl>
+          </article>
+          <article class="scenario-card">
+            <h3>Fallo de red</h3>
+            <p>Se revisa conectividad del cluster, acceso de clientes y comunicacion entre hosts.</p>
+            <dl>
+              <div><dt>Respuesta</dt><dd>Enlaces redundantes</dd></div>
+              <div><dt>Riesgo</dt><dd>Aislamiento de nodos o interrupcion del servicio</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="exposicion" class="section presentation-section">
+        <svg class="electric-card-filter" aria-hidden="true" focusable="false">
+          <defs>
+            <filter id="emerald-electric-border" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+              <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+              <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise3" seed="2" />
+              <feOffset in="noise3" dx="0" dy="0" result="offsetNoise3">
+                <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise4" seed="2" />
+              <feOffset in="noise4" dx="0" dy="0" result="offsetNoise4">
+                <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
+              <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+              <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+              <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+              <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="24" xChannelSelector="R" yChannelSelector="B" />
+            </filter>
+          </defs>
+        </svg>
+        <div class="section-heading">
+          <p class="eyebrow">Exposicion HT-09</p>
+          <h2>Contenido distribuido para los 6 integrantes</h2>
+        </div>
+        <div class="presentation-grid">
+          <article class="presentation-card">
+            <span class="presentation-number">01</span>
+            <h3>Introduccion del problema</h3>
+            <p>
+              Presentar el contexto del laboratorio de ciencia de datos e IA y
+              explicar por que las cargas criticas necesitan alta disponibilidad.
+            </p>
+            <a href="integrante-1.html">Ver Integrante →</a>
+          </article>
+          <article class="presentation-card">
+            <span class="presentation-number">02</span>
+            <h3>Opciones HA</h3>
+            <p>
+              Comparar active-active, active-passive, N+1, replicacion y
+              balanceo para elegir una alternativa segun criticidad.
+            </p>
+            <a href="integrante-2.html">Ver Integrante →</a>
+          </article>
+          <article class="presentation-card">
+            <span class="presentation-number">03</span>
+            <h3>Componentes criticos</h3>
+            <p>
+              Identificar maquinas virtuales, bases de datos, red,
+              almacenamiento y servicios de visualizacion dentro del entorno.
+            </p>
+            <a href="integrante-3.html">Ver Integrante →</a>
+          </article>
+          <article class="presentation-card">
+            <span class="presentation-number">04</span>
+            <h3>Configuracion del cluster</h3>
+            <p>
+              Explicar hosts, almacenamiento compartido, red homogenea,
+              habilitacion de HA y asignacion de VM criticas.
+            </p>
+            <a href="integrante-4.html">Ver Integrante →</a>
+          </article>
+          <article class="presentation-card">
+            <span class="presentation-number">05</span>
+            <h3>Escenarios de fallo</h3>
+            <p>
+              Plantear fallos de host, red, almacenamiento, cluster e
+              hipervisor, junto con RTO, RPO y proceso de recuperacion.
+            </p>
+            <a href="integrante-5.html">Ver Integrante →</a>
+          </article>
+          <article class="presentation-card">
+            <span class="presentation-number">06</span>
+            <h3>Cierre y recomendaciones</h3>
+            <p>
+              Resumir resultados, aprendizajes de la simulacion y mejoras para
+              fortalecer la tolerancia de fallos.
+            </p>
+            <a href="integrante-6.html">Ver Integrante →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section deliverables">
+        <div class="section-heading">
+          <p class="eyebrow">Entregables</p>
+          <h2>Producto final que puede presentar el equipo</h2>
+        </div>
+        <div class="deliverable-layout">
+          <div class="deliverable-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Diagnostico del entorno</h3>
+                <p>Inventario de hosts, VM, almacenamiento, red y cargas criticas de IA.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Seleccion de HA</h3>
+                <p>Comparacion de opciones y justificacion tecnica de la alternativa elegida.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Configuracion del cluster</h3>
+                <p>Descripcion de hosts, almacenamiento, red, roles y prueba de failover.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Escenarios y recomendaciones</h3>
+                <p>Registro de fallos, impacto, RTO, RPO y mejoras para mayor tolerancia.</p>
+              </div>
+            </article>
+          </div>
+          <figure>
+            <img src="pdf_pages/page-05-image-01.png" alt="Configuracion de alta disponibilidad en asistente de maquina virtual" />
+          </figure>
+        </div>
+      </section>
+
+      <section id="checklist" class="section checklist-band">
+        <div class="section-heading">
+          <p class="eyebrow">Checklist</p>
+          <h2>Control rapido de avance</h2>
+        </div>
+        <div class="checklist" aria-live="polite">
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Identifique opciones HA por componente.</strong>
+              <small>Compare active-active, active-passive, N+1, replicacion y balanceo segun el servicio protegido.</small>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Clasifique criticidad de cargas IA y datos.</strong>
+              <small>Separe bases de datos, modelos, procesamiento, almacenamiento y reportes por impacto alto, medio o bajo.</small>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Configure almacenamiento compartido o replicado.</strong>
+              <small>Defina SAN/NAS o replica para que las VM puedan moverse sin perder acceso a sus discos.</small>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Cree el cluster con dos o mas hosts.</strong>
+              <small>Agregue los hosts, valide red homogenea, habilite HA y asigne las VM criticas.</small>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Simule al menos un escenario de fallo.</strong>
+              <small>Pruebe caida de host, red o almacenamiento y observe si ocurre failover correctamente.</small>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span>
+              <strong>Documente RTO, RPO, resultados y mejoras.</strong>
+              <small>Registre tiempos de recuperacion, perdida tolerable, evidencias y recomendaciones finales.</small>
+            </span>
+          </label>
+          <div class="progress">
+            <span id="progressText">0 de 6 completados</span>
+            <div class="progress-track"><span id="progressBar"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipo" class="section team-section">
+        <div class="section-heading">
+          <p class="eyebrow">Equipo expositor</p>
+          <h2>6 integrantes para presentar la Tarea HT-09</h2>
+        </div>
+        <div class="team-grid">
+          <article class="member-card">
+            <img src="integrante1.png" alt="Fotografia del integrante 1" />
+            <h3>Integrante 1</h3>
+            <p>Presenta el caso practico y el objetivo de la tarea.</p>
+            <ul>
+              <li>Explica que el laboratorio trabaja con ciencia de datos e IA.</li>
+              <li>Describe por que las cargas criticas no deben detenerse.</li>
+              <li>Introduce la meta: continuidad operativa y menor tiempo de inactividad.</li>
+            </ul>
+            <a class="member-button" href="#integrante-1">Ver tema asignado</a>
+          </article>
+          <article class="member-card">
+            <img src="integrante2.png" alt="Fotografia del integrante 2" />
+            <h3>Integrante 2</h3>
+            <p>Explica las opciones de alta disponibilidad.</p>
+            <ul>
+              <li>Compara active-active, active-passive y N+1.</li>
+              <li>Indica ventajas, limitaciones, costo y complejidad.</li>
+              <li>Justifica que opcion conviene segun la criticidad del servicio.</li>
+            </ul>
+            <a class="member-button" href="#integrante-2">Ver tema asignado</a>
+          </article>
+          <article class="member-card">
+            <img src="integrante3.png" alt="Fotografia del integrante 3" />
+            <h3>Integrante 3</h3>
+            <p>Describe los componentes criticos del entorno IA.</p>
+            <ul>
+              <li>Identifica VM, bases de datos, red, almacenamiento y visualizacion.</li>
+              <li>Clasifica cada componente por impacto: critico, medio o bajo.</li>
+              <li>Senala los puntos de fallo principales del entorno.</li>
+            </ul>
+            <a class="member-button" href="#integrante-3">Ver tema asignado</a>
+          </article>
+          <article class="member-card">
+            <img src="integrante4.png" alt="Fotografia del integrante 4" />
+            <h3>Integrante 4</h3>
+            <p>Expone la configuracion del cluster y sus requisitos.</p>
+            <ul>
+              <li>Presenta los requisitos: minimo 2 hosts, red y almacenamiento.</li>
+              <li>Explica como se agregan hosts y se habilita HA.</li>
+              <li>Describe la asignacion de roles para VM criticas.</li>
+            </ul>
+            <a class="member-button" href="#integrante-4">Ver tema asignado</a>
+          </article>
+          <article class="member-card">
+            <img src="integrante5.png" alt="Fotografia del integrante 5" />
+            <h3>Integrante 5</h3>
+            <p>Presenta escenarios de fallo, RTO y RPO.</p>
+            <ul>
+              <li>Explica fallos de host, almacenamiento, red, cluster e hipervisor.</li>
+              <li>Define respuesta: deteccion, failover, notificacion y recuperacion.</li>
+              <li>Relaciona cada escenario con tiempo de recuperacion y perdida tolerable.</li>
+            </ul>
+            <a class="member-button" href="#integrante-5">Ver tema asignado</a>
+          </article>
+          <article class="member-card">
+            <img src="integrante6.png" alt="Fotografia del integrante 6" />
+            <h3>Integrante 6</h3>
+            <p>Cierra con resultados, recomendaciones y preguntas.</p>
+            <ul>
+              <li>Resume los resultados de la simulacion de fallo.</li>
+              <li>Propone mejoras: mas nodos, red redundante y almacenamiento diverso.</li>
+              <li>Responde las preguntas de retroalimentacion de la tarea.</li>
+            </ul>
+            <a class="member-button" href="#integrante-6">Ver tema asignado</a>
+          </article>
+        </div>
+
+        <div class="member-details">
+          <article id="integrante-1" class="member-detail">
+            <img src="integrante1.png" alt="Fotografia del integrante 1" />
+            <div>
+              <p class="eyebrow">Integrante 1</p>
+              <h3>Caso practico, objetivo y problema central</h3>
+              <p>
+                Este integrante abre la exposicion. Debe explicar que la tarea
+                HT-09 busca planificar alta disponibilidad y tolerancia de
+                fallos para servidores virtualizados usados en ciencia de datos
+                e inteligencia artificial.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "Nuestro caso practico trata sobre un laboratorio de ciencia
+                  de datos e inteligencia artificial. En este entorno existen
+                  cargas criticas como bases de datos, modelos de entrenamiento
+                  y procesamiento por lotes. Si un servidor falla, estas cargas
+                  pueden detenerse y afectar la continuidad del servicio. Por
+                  eso se plantea una arquitectura de alta disponibilidad y
+                  tolerancia de fallos."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Parte</th><td>Introduccion general antes de las operaciones.</td></tr>
+                  <tr><th>Tema</th><td>Laboratorio de infraestructura para datos e IA.</td></tr>
+                  <tr><th>Debe plantear</th><td>Que servicios son criticos y que ocurriria si se detienen.</td></tr>
+                  <tr><th>Frase guia</th><td>La continuidad operativa permite que las cargas de IA sigan disponibles aun cuando falle un componente.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#integrante-2">Siguiente integrante</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="integrante-2" class="member-detail">
+            <img src="integrante2.png" alt="Fotografia del integrante 2" />
+            <div>
+              <p class="eyebrow">Integrante 2</p>
+              <h3>Operacion 01: opciones de alta disponibilidad</h3>
+              <p>
+                Explica las opciones que puede usar la organizacion para evitar
+                interrupciones. Debe comparar cada alternativa y justificar cual
+                conviene segun impacto, costo y complejidad.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "En la Operacion 01 se identifican las opciones de alta
+                  disponibilidad. Primero se revisa que mecanismos soporta la
+                  plataforma de virtualizacion. Luego se comparan alternativas
+                  como active-active, active-passive y N+1. La eleccion depende
+                  de la criticidad del servicio, el costo, la complejidad y el
+                  nivel de proteccion requerido."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Operacion</th><td>Operacion 01: identifica las opciones de alta disponibilidad.</td></tr>
+                  <tr><th>Active-active</th><td>Dos nodos trabajan al mismo tiempo y reparten la carga.</td></tr>
+                  <tr><th>Active-passive</th><td>Un nodo principal atiende y otro queda preparado para tomar el servicio.</td></tr>
+                  <tr><th>N+1</th><td>Un nodo adicional cubre la caida de uno de los hosts del cluster.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#integrante-1">Anterior</a>
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#integrante-3">Siguiente integrante</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="integrante-3" class="member-detail">
+            <img src="integrante3.png" alt="Fotografia del integrante 3" />
+            <div>
+              <p class="eyebrow">Integrante 3</p>
+              <h3>Componentes criticos y puntos de fallo</h3>
+              <p>
+                Presenta el inventario tecnico. Su parte consiste en mostrar
+                que elementos necesitan mayor prioridad y donde podrian aparecer
+                fallos dentro del entorno virtualizado.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "Dentro de la Operacion 01 tambien se deben clasificar los
+                  componentes criticos. En este entorno se consideran criticas
+                  las maquinas virtuales de procesamiento, las bases de datos,
+                  el almacenamiento y los servicios que apoyan el entrenamiento
+                  de modelos. Luego se identifican puntos de fallo como el host
+                  fisico, la red, el almacenamiento compartido y el hipervisor."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Operacion</th><td>Operacion 01: clasificacion de componentes y puntos de fallo.</td></tr>
+                  <tr><th>Critico</th><td>Bases de datos, modelos de entrenamiento, VM de procesamiento y almacenamiento.</td></tr>
+                  <tr><th>Medio</th><td>Servicios de visualizacion, reportes y herramientas auxiliares.</td></tr>
+                  <tr><th>Puntos de fallo</th><td>Host fisico, red, almacenamiento compartido, hipervisor y gestion del cluster.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#integrante-2">Anterior</a>
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#integrante-4">Siguiente integrante</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="integrante-4" class="member-detail">
+            <img src="integrante4.png" alt="Fotografia del integrante 4" />
+            <div>
+              <p class="eyebrow">Integrante 4</p>
+              <h3>Operacion 02: configuracion del cluster</h3>
+              <p>
+                Explica como se arma el cluster HA. Debe mencionar los
+                requisitos previos y el proceso para agregar hosts, activar HA y
+                asignar las VM criticas.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "En la Operacion 02 se configura el cluster. Para ello se
+                  necesitan al menos dos hosts fisicos, una red estable y un
+                  almacenamiento compartido o replicado. Despues se agregan los
+                  hosts al cluster, se habilita la funcion de alta
+                  disponibilidad y se asignan las maquinas virtuales criticas
+                  para que puedan reiniciarse en otro nodo si ocurre un fallo."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Operacion</th><td>Operacion 02: configurar cluster.</td></tr>
+                  <tr><th>Hosts</th><td>Minimo dos nodos con hipervisor compatible y versiones homogeneas.</td></tr>
+                  <tr><th>Almacenamiento</th><td>SAN/NAS compartido o almacenamiento replicado para que las VM puedan moverse.</td></tr>
+                  <tr><th>Prueba</th><td>Simular la caida de un host y validar que las VM se reinicien en otro nodo.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#integrante-3">Anterior</a>
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#integrante-5">Siguiente integrante</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="integrante-5" class="member-detail">
+            <img src="integrante5.png" alt="Fotografia del integrante 5" />
+            <div>
+              <p class="eyebrow">Integrante 5</p>
+              <h3>Operacion 03: escenarios de fallos</h3>
+              <p>
+                Presenta los escenarios que se deben simular y documentar.
+                Tambien explica como se mide el impacto usando RTO y RPO para
+                saber si la solucion cumple con el nivel de servicio esperado.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "En la Operacion 03 se disenan escenarios de fallo. Se pueden
+                  simular fallos de host, red, almacenamiento, cluster o
+                  hipervisor. Para cada escenario se define la respuesta:
+                  deteccion automatica, failover, notificacion al equipo y
+                  recuperacion del nodo. Tambien se estima el RTO y el RPO para
+                  medir el impacto real del fallo."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Operacion</th><td>Operacion 03: disenar escenarios de fallos.</td></tr>
+                  <tr><th>RTO</th><td>Tiempo maximo aceptable para recuperar el servicio despues del fallo.</td></tr>
+                  <tr><th>RPO</th><td>Cantidad maxima de datos que se puede perder sin afectar gravemente la operacion.</td></tr>
+                  <tr><th>Respuesta</th><td>Deteccion automatica, failover, alerta al equipo y recuperacion del nodo fallido.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#integrante-4">Anterior</a>
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#integrante-6">Siguiente integrante</a>
+              </div>
+            </div>
+          </article>
+
+          <article id="integrante-6" class="member-detail">
+            <img src="integrante6.png" alt="Fotografia del integrante 6" />
+            <div>
+              <p class="eyebrow">Integrante 6</p>
+              <h3>Resultados, mejoras y cierre de exposicion</h3>
+              <p>
+                Cierra la presentacion conectando lo aprendido con acciones de
+                mejora. Debe responder las preguntas de retroalimentacion y
+                explicar como reforzar la arquitectura HA.
+              </p>
+              <div class="reading-block">
+                <h4>Trabajo que va a leer</h4>
+                <p>
+                  "Como cierre, la simulacion permite comprobar si el cluster
+                  responde correctamente ante fallos. Si las maquinas virtuales
+                  se recuperan en otro host y el servicio continua, la
+                  arquitectura cumple su objetivo. Como mejoras se recomienda
+                  agregar mas nodos, usar red redundante, diversificar el
+                  almacenamiento y definir politicas de mantenimiento
+                  preventivo."
+                </p>
+              </div>
+              <table>
+                <tbody>
+                  <tr><th>Parte</th><td>Cierre de la exposicion y retroalimentacion.</td></tr>
+                  <tr><th>Resultado</th><td>El cluster debe mantener disponibles las VM criticas ante fallos simulados.</td></tr>
+                  <tr><th>Mejoras</th><td>Agregar nodos, diversificar almacenamiento, mejorar red y programar mantenimiento.</td></tr>
+                  <tr><th>Cierre</th><td>La alta disponibilidad reduce interrupciones y protege procesos importantes de IA.</td></tr>
+                </tbody>
+              </table>
+              <div class="member-actions">
+                <a href="#integrante-5">Anterior</a>
+                <a href="#equipo">Volver al equipo</a>
+                <a href="#retroalimentacion">Preguntas finales</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="retroalimentacion" class="section questions">
+        <div class="section-heading">
+          <p class="eyebrow">Retroalimentacion</p>
+          <h2>Preguntas para responder</h2>
+        </div>
+        <div class="qa-list">
+          <article class="qa-item">
+            <button type="button">1.-¿Que factores determinaron que componentes del entorno de IA necesitaban alta disponibilidad?</button>
+            <p>Se considero la criticidad del servicio, el impacto en usuarios, la dependencia de bases de datos, el tiempo maximo de interrupcion permitido y la importancia de las cargas de entrenamiento, procesamiento y almacenamiento.</p>
+          </article>
+          <article class="qa-item">
+            <button type="button">2.-¿Cual escenario de fallo fue el mas probable y por que?</button>
+            <p>El fallo de host fisico fue uno de los escenarios mas probables porque los servidores ejecutan varias VM criticas. Si un host cae, el cluster debe mover o reiniciar esas VM en otro nodo disponible.</p>
+          </article>
+          <article class="qa-item">
+            <button type="button">3.-¿Que impacto tuvo la simulacion y que aprendizajes surgieron?</button>
+            <p>La simulacion mostro que una arquitectura HA reduce el tiempo de inactividad. Tambien permitio observar la importancia de monitoreo, almacenamiento compartido, red estable y pruebas de failover antes de una falla real.</p>
+          </article>
+          <article class="qa-item">
+            <button type="button">4.-¿Como se documento la arquitectura HA y el proceso de failover?</button>
+            <p>Se documento mediante tablas, diagramas, checklist, escenarios de fallo, medicion de RTO/RPO y registros de simulacion en terminal para explicar cada paso: deteccion, respuesta, migracion y recuperacion.</p>
+          </article>
+          <article class="qa-item">
+            <button type="button">5.-¿Que mejoras futuras reforzarian la tolerancia de fallos?</button>
+            <p>Se recomienda agregar mas nodos, usar red redundante, diversificar almacenamiento, aplicar monitoreo continuo, programar mantenimiento preventivo y definir politicas claras de respaldo y recuperacion.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Tarea HT-09 | Tecnologias de Virtualizacion Avanzado</p>
+      <a href="#principal">Volver arriba</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

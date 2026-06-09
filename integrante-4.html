@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrante 4 | HT-09</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="member-page-body">
+    <main class="single-member-page member-profile-page">
+      <a class="back-link" href="index.html#exposicion">← VOLVER AL PROYECTO</a>
+
+      <section class="member-profile-shell">
+        <aside class="member-sidebar">
+          <img src="integrante4.png" alt="Fotografia del integrante 4" />
+          <div class="member-side-label">Integrante</div>
+          <strong class="member-side-number">04</strong>
+          <div class="member-side-rule"></div>
+          <div class="member-side-meta">
+            <div><span>ROL</span><p><strong>Rol en el proyecto</strong><small>Configuracion tecnica</small></p></div>
+            <div><span>AP</span><p><strong>Aporte principal</strong><small>Cluster HA</small></p></div>
+            <div><span>FE</span><p><strong>Fecha</strong><small>Mayo 2025</small></p></div>
+          </div>
+        </aside>
+
+        <article class="member-main">
+          <div class="member-kicker"><span>Integrante 04</span><i></i></div>
+          <h1 class="member-page-title">Operacion 02: configuracion del <span>cluster</span></h1>
+          <p class="member-summary">
+            Este integrante explica como se prepara el cluster HA y que requisitos se necesitan para que las VM puedan recuperarse ante fallos.
+          </p>
+
+          <div class="member-analysis-card">
+            <div class="analysis-icon">04</div>
+            <div>
+              <h4>Trabajo que va a leer</h4>
+              <p>"En la Operacion 02 se configura el cluster. Para ello se necesitan al menos dos hosts fisicos, una red estable y un almacenamiento compartido o replicado. Despues se agregan los hosts al cluster, se habilita la funcion de alta disponibilidad y se asignan las maquinas virtuales criticas para que puedan reiniciarse en otro nodo si ocurre un fallo."</p>
+            </div>
+          </div>
+
+          <div class="member-info-list">
+            <div class="member-info-row"><div class="member-info-icon">A</div><strong>Operacion</strong><span>Operacion 02: configurar cluster.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">B</div><strong>Hosts</strong><span>Minimo dos nodos con hipervisor compatible y versiones homogeneas.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">C</div><strong>Storage</strong><span>SAN/NAS compartido o almacenamiento replicado para que las VM puedan moverse.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">D</div><strong>Prueba</strong><span>Simular la caida de un host y validar que las VM se reinicien en otro nodo.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="member-dashboard">
+        <div class="dashboard-status">Integrante 04</div>
+        <div class="dashboard-grid">
+          <section class="dash-card">
+            <h2 class="dash-title">Requisitos del cluster</h2>
+            <div class="dash-bars">
+              <div class="dash-bar" style="--value: 90%"><span>2+ hosts fisicos</span><strong>Base</strong></div>
+              <div class="dash-bar" style="--value: 86%"><span>Red homogenea</span><strong>Alta</strong></div>
+              <div class="dash-bar" style="--value: 82%"><span>Storage compartido</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 78%"><span>Gestion HA</span><strong>Clave</strong></div>
+            </div>
+            <div class="dash-tags">
+              <div class="dash-tag"><strong>Hosts</strong><span>Nodos compatibles.</span></div>
+              <div class="dash-tag"><strong>Red</strong><span>Comunicacion estable.</span></div>
+              <div class="dash-tag"><strong>Storage</strong><span>Acceso a discos de VM.</span></div>
+              <div class="dash-tag"><strong>HA</strong><span>Politica de reinicio.</span></div>
+            </div>
+          </section>
+          <section class="dash-card explanation-card">
+            <h2 class="dash-title">Explicacion</h2>
+            <p>El cluster permite que las VM criticas se recuperen en otro nodo cuando un host falla. Para lograrlo, los hosts deben compartir red, almacenamiento y politicas HA.</p>
+            <div class="dash-quote">La configuracion correcta del cluster convierte un fallo de host en una recuperacion controlada.</div>
+          </section>
+        </div>
+
+        <section class="dash-card simulator dashboard-sim" data-sim="cluster">
+          <h2 class="dash-title">Simulacion: failover del cluster</h2>
+          <p>Simula la caida del Host 1 y observa como las VM criticas pasan al Host 2.</p>
+          <div class="sim-layout">
+            <div>
+              <div class="ha-lab">
+                <div class="host-card host-primary"><strong>Host 1</strong><span>VM1 + VM2</span></div>
+                <div class="ha-link">⇄</div>
+                <div class="host-card host-secondary"><strong>Host 2</strong><span>Disponible</span></div>
+                <div class="storage-bus">Storage compartido</div>
+              </div>
+              <div class="sim-steps"><span>Detectar</span><span>Activar HA</span><span>Migrar VM</span><span>Continuar</span></div>
+            </div>
+            <aside class="sim-control-panel">
+              <h3>Control de failover</h3>
+              <p>El terminal muestra perdida de heartbeat, activacion HA, migracion y continuidad del servicio.</p>
+              <button class="sim-button" type="button">Simular caida de Host 1</button>
+              <div class="sim-result">Estado inicial: cluster operativo.</div>
+              <div class="sim-terminal" aria-live="polite">
+                <div class="terminal-header"><span></span><span></span><span></span><strong>terminal HT-09</strong></div>
+                <pre data-terminal>[00:00] Cluster listo. Esperando simulacion de failover...</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Resultados del cluster</h2>
+          <div class="result-grid">
+            <div class="result-box"><strong>Antes del fallo</strong><ul><li>Hosts operativos.</li><li>VM en Host 1.</li><li>Storage disponible.</li></ul><span class="impact-label">Estado: normal</span></div>
+            <div class="result-box"><strong>Durante failover</strong><ul><li>Se detecta caida.</li><li>HA elige Host 2.</li><li>VM se reinician.</li></ul><span class="impact-label">Respuesta: automatica</span></div>
+            <div class="result-box"><strong>Despues</strong><ul><li>Servicio continuo.</li><li>Interrupcion minima.</li><li>Host fallido se recupera.</li></ul></div>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Siguientes pasos</h2>
+          <div class="next-steps">
+            <div class="step-box"><strong>1. Preparar</strong><span>Hosts fisicos.</span></div>
+            <div class="step-box"><strong>2. Unificar</strong><span>Red y versiones.</span></div>
+            <div class="step-box"><strong>3. Conectar</strong><span>Storage compartido.</span></div>
+            <div class="step-box"><strong>4. Habilitar</strong><span>Funcion HA.</span></div>
+            <div class="step-box"><strong>5. Validar</strong><span>Prueba de failover.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="member-actions">
+        <a href="integrante-3.html">Anterior</a>
+        <a href="index.html#exposicion">Volver al indice</a>
+        <a href="integrante-5.html">Siguiente integrante</a>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

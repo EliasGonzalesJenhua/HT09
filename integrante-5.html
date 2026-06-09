@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrante 5 | HT-09</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="member-page-body">
+    <main class="single-member-page member-profile-page">
+      <a class="back-link" href="index.html#exposicion">← VOLVER AL PROYECTO</a>
+
+      <section class="member-profile-shell">
+        <aside class="member-sidebar">
+          <img src="integrante5.png" alt="Fotografia del integrante 5" />
+          <div class="member-side-label">Integrante</div>
+          <strong class="member-side-number">05</strong>
+          <div class="member-side-rule"></div>
+          <div class="member-side-meta">
+            <div><span>ROL</span><p><strong>Rol en el proyecto</strong><small>Analisis de fallos</small></p></div>
+            <div><span>AP</span><p><strong>Aporte principal</strong><small>Escenarios de fallo</small></p></div>
+            <div><span>FE</span><p><strong>Fecha</strong><small>Mayo 2025</small></p></div>
+          </div>
+        </aside>
+
+        <article class="member-main">
+          <div class="member-kicker"><span>Integrante 05</span><i></i></div>
+          <h1 class="member-page-title">Operacion 03: escenarios de <span>fallos</span></h1>
+          <p class="member-summary">
+            Este integrante presenta los fallos que se deben simular y como se mide el impacto usando RTO y RPO.
+          </p>
+
+          <div class="member-analysis-card">
+            <div class="analysis-icon">05</div>
+            <div>
+              <h4>Trabajo que va a leer</h4>
+              <p>"En la Operacion 03 se disenan escenarios de fallo. Se pueden simular fallos de host, red, almacenamiento, cluster o hipervisor. Para cada escenario se define la respuesta: deteccion automatica, failover, notificacion al equipo y recuperacion del nodo. Tambien se estima el RTO y el RPO para medir el impacto real del fallo."</p>
+            </div>
+          </div>
+
+          <div class="member-info-list">
+            <div class="member-info-row"><div class="member-info-icon">A</div><strong>Operacion</strong><span>Operacion 03: disenar escenarios de fallos.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">B</div><strong>RTO</strong><span>Tiempo maximo aceptable para recuperar el servicio despues del fallo.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">C</div><strong>RPO</strong><span>Cantidad maxima de datos que se puede perder sin afectar gravemente la operacion.</span></div>
+            <div class="member-info-row"><div class="member-info-icon">D</div><strong>Respuesta</strong><span>Deteccion automatica, failover, alerta al equipo y recuperacion del nodo fallido.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="member-dashboard">
+        <div class="dashboard-status">Integrante 05</div>
+        <div class="dashboard-grid">
+          <section class="dash-card">
+            <h2 class="dash-title">Escenarios recomendados</h2>
+            <div class="dash-bars">
+              <div class="dash-bar" style="--value: 92%"><span>Fallo de host</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 88%"><span>Fallo de storage</span><strong>Critico</strong></div>
+              <div class="dash-bar" style="--value: 76%"><span>Fallo de red</span><strong>Alto</strong></div>
+              <div class="dash-bar" style="--value: 70%"><span>Hipervisor</span><strong>Alto</strong></div>
+            </div>
+            <div class="dash-tags">
+              <div class="dash-tag"><strong>RTO</strong><span>Tiempo de recuperacion.</span></div>
+              <div class="dash-tag"><strong>RPO</strong><span>Perdida tolerable.</span></div>
+              <div class="dash-tag"><strong>Alerta</strong><span>Notificacion temprana.</span></div>
+              <div class="dash-tag"><strong>Recovery</strong><span>Restauracion del nodo.</span></div>
+            </div>
+          </section>
+          <section class="dash-card explanation-card">
+            <h2 class="dash-title">Explicacion</h2>
+            <p>Los escenarios de fallo permiten comprobar si la arquitectura realmente responde. Cada incidente debe medirse con RTO, RPO, impacto y accion de recuperacion.</p>
+            <div class="dash-quote">Una arquitectura HA se valida simulando fallos, no solo describiendo componentes.</div>
+          </section>
+        </div>
+
+        <section class="dash-card simulator dashboard-sim" data-sim="failure">
+          <h2 class="dash-title">Simulacion: escenarios RTO/RPO</h2>
+          <p>Selecciona un fallo para medir respuesta, riesgo y tiempo estimado de recuperacion.</p>
+          <div class="sim-layout">
+            <div>
+              <div class="sim-option-row">
+                <button class="sim-button" type="button" data-failure="host">Host</button>
+                <button class="sim-button" type="button" data-failure="network">Red</button>
+                <button class="sim-button" type="button" data-failure="storage">Almacenamiento</button>
+                <button class="sim-button" type="button" data-failure="hypervisor">Hipervisor</button>
+              </div>
+              <div class="incident-lab">
+                <div class="incident-pulse"></div>
+                <div class="incident-node">Cluster HA</div>
+                <div class="incident-alert">Alerta</div>
+              </div>
+              <div class="rto-rpo-panel">
+                <article><span>RTO</span><strong data-rto>--</strong></article>
+                <article><span>RPO</span><strong data-rpo>--</strong></article>
+              </div>
+            </div>
+            <aside class="sim-control-panel">
+              <h3>Registro de incidente</h3>
+              <p>El terminal documenta el tipo de fallo, el RTO/RPO estimado y la respuesta esperada.</p>
+              <div class="sim-result">Selecciona un escenario para documentar el comportamiento.</div>
+              <div class="sim-terminal" aria-live="polite">
+                <div class="terminal-header"><span></span><span></span><span></span><strong>terminal HT-09</strong></div>
+                <pre data-terminal>[00:00] Monitor listo. Esperando escenario de fallo...</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Resultados de incidentes</h2>
+          <div class="result-grid">
+            <div class="result-box warning"><strong>Riesgo alto</strong><ul><li>Storage sin replica.</li><li>Host sin nodo alterno.</li><li>Red sin redundancia.</li></ul><span class="impact-label">Impacto: critico</span></div>
+            <div class="result-box"><strong>Respuesta HA</strong><ul><li>Detectar fallo.</li><li>Activar failover.</li><li>Notificar al equipo.</li><li>Recuperar nodo.</li></ul><span class="impact-label">Impacto: controlado</span></div>
+            <div class="result-box"><strong>Evidencia</strong><ul><li>Logs del terminal.</li><li>Tiempos RTO/RPO.</li><li>Capturas de prueba.</li></ul></div>
+          </div>
+        </section>
+
+        <section class="dash-card">
+          <h2 class="dash-title">Siguientes pasos</h2>
+          <div class="next-steps">
+            <div class="step-box"><strong>1. Definir</strong><span>Tipos de fallo.</span></div>
+            <div class="step-box"><strong>2. Ejecutar</strong><span>Simulacion controlada.</span></div>
+            <div class="step-box"><strong>3. Medir</strong><span>RTO y RPO.</span></div>
+            <div class="step-box"><strong>4. Registrar</strong><span>Logs y evidencias.</span></div>
+            <div class="step-box"><strong>5. Mejorar</strong><span>Acciones correctivas.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="member-actions">
+        <a href="integrante-4.html">Anterior</a>
+        <a href="index.html#exposicion">Volver al indice</a>
+        <a href="integrante-6.html">Siguiente integrante</a>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
