@@ -1,5 +1,100 @@
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".operation-panel");
+const loginForm = document.querySelector("#loginForm");
+const loginError = document.querySelector("#loginError");
+const loadingScreen = document.querySelector("#loadingScreen");
+const loadingVideo = loadingScreen?.querySelector("video");
+const logoutButton = document.querySelector("#logoutButton");
+const authKey = "ht09-valorant-authenticated";
+let loadingVideoWatchdog = null;
+
+if (sessionStorage.getItem(authKey) === "true") {
+  document.body.classList.remove("auth-locked");
+}
+
+function playLoadingVideo() {
+  if (!loadingVideo) return;
+
+  loadingVideo.muted = true;
+  loadingVideo.loop = true;
+  loadingVideo.playsInline = true;
+  loadingVideo.preload = "auto";
+
+  const startPlayback = () => {
+    loadingVideo.play().catch(() => {});
+  };
+
+  clearInterval(loadingVideoWatchdog);
+
+  try {
+    loadingVideo.currentTime = 0;
+  } catch {
+    // El navegador puede bloquear el salto hasta cargar metadatos.
+  }
+
+  if (loadingVideo.readyState >= 2) {
+    startPlayback();
+  } else {
+    loadingVideo.load();
+    loadingVideo.addEventListener("canplay", startPlayback, { once: true });
+    loadingVideo.addEventListener("loadeddata", startPlayback, { once: true });
+  }
+
+  loadingVideoWatchdog = setInterval(() => {
+    if (!document.body.classList.contains("loading-active")) {
+      clearInterval(loadingVideoWatchdog);
+      return;
+    }
+
+    if (loadingVideo.paused || loadingVideo.readyState < 2) {
+      startPlayback();
+    }
+  }, 900);
+}
+
+if (loginForm) {
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const user = document.querySelector("#loginUser")?.value.trim();
+    const password = document.querySelector("#loginPassword")?.value.trim();
+
+    if (!user || !password) {
+      if (loginError) loginError.textContent = "Completa usuario y clave para entrar.";
+      return;
+    }
+
+    if (loginError) loginError.textContent = "";
+    if (loadingScreen) {
+      loadingScreen.hidden = false;
+      document.body.classList.add("loading-active");
+      playLoadingVideo();
+    }
+
+    setTimeout(() => {
+      sessionStorage.setItem(authKey, "true");
+      document.body.classList.remove("auth-locked");
+      document.body.classList.remove("loading-active");
+      if (loadingScreen) loadingScreen.hidden = true;
+      clearInterval(loadingVideoWatchdog);
+      if (loadingVideo) loadingVideo.pause();
+    }, 45000);
+  });
+}
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", () => {
+    sessionStorage.removeItem(authKey);
+    document.body.classList.add("auth-locked");
+    document.body.classList.remove("loading-active");
+    if (loadingScreen) loadingScreen.hidden = true;
+    clearInterval(loadingVideoWatchdog);
+    if (loadingVideo) loadingVideo.pause();
+    if (loginForm) loginForm.reset();
+    if (loginError) loginError.textContent = "";
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  });
+}
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
@@ -18,6 +113,35 @@ tabs.forEach((tab) => {
     });
   });
 });
+
+const materialSlides = document.querySelectorAll(".materials-slide");
+const materialsNext = document.querySelector(".materials-control.next");
+const materialsPrevious = document.querySelector(".materials-control.previous");
+let materialIndex = 0;
+
+function showMaterialSlide(nextIndex) {
+  if (!materialSlides.length) return;
+  materialSlides[materialIndex].classList.remove("active");
+  materialIndex = (nextIndex + materialSlides.length) % materialSlides.length;
+  materialSlides[materialIndex].classList.add("active");
+}
+
+if (materialSlides.length && materialsNext && materialsPrevious) {
+  materialsNext.addEventListener("click", () => showMaterialSlide(materialIndex + 1));
+  materialsPrevious.addEventListener("click", () => showMaterialSlide(materialIndex - 1));
+
+  document.addEventListener("keydown", (event) => {
+    const section = document.querySelector(".materials-section");
+    if (!section) return;
+
+    const box = section.getBoundingClientRect();
+    const isVisible = box.top < window.innerHeight * 0.75 && box.bottom > window.innerHeight * 0.25;
+    if (!isVisible) return;
+
+    if (event.key === "ArrowRight") showMaterialSlide(materialIndex + 1);
+    if (event.key === "ArrowLeft") showMaterialSlide(materialIndex - 1);
+  });
+}
 
 const checks = document.querySelectorAll(".checklist input");
 const progressText = document.querySelector("#progressText");

@@ -6,7 +6,57 @@
     <title>Tarea HT-09 | Alta disponibilidad</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="auth-locked">
+    <section class="login-access" id="loginAccess" aria-label="Login de acceso">
+      <video class="login-bg-video" autoplay muted loop playsinline poster="fondo.jpg" aria-hidden="true">
+        <source src="omen-agent-valorant-moewalls-com.mp4" type="video/mp4" />
+      </video>
+
+      <form class="login-play-cont" id="loginForm">
+        <img class="login-logo" src="ICONO DE VALORANT.jpg" alt="Icono de Valorant" />
+        <h1>Sign in</h1>
+        <label class="login-field">
+          <span>USERNAME</span>
+          <input type="text" id="loginUser" autocomplete="username" required />
+        </label>
+        <label class="login-field">
+          <span>PASSWORD</span>
+          <input type="password" id="loginPassword" autocomplete="current-password" required />
+        </label>
+        <div class="login-socials" aria-label="Opciones sociales de acceso">
+          <button class="facebook" type="button" aria-label="Facebook">f</button>
+          <button class="google" type="button" aria-label="Google">G</button>
+          <button class="apple" type="button" aria-label="Apple">●</button>
+          <button class="xbox" type="button" aria-label="Xbox">X</button>
+          <button class="playstation" type="button" aria-label="PlayStation">PS</button>
+        </div>
+        <label class="login-stay">
+          <input type="checkbox" />
+          <span>Stay signed in</span>
+        </label>
+        <button class="login-submit" type="submit" aria-label="Ingresar">→</button>
+        <p class="login-error" id="loginError" role="alert"></p>
+        <div class="login-links">
+          <a href="#principal">CAN'T SIGN IN?</a>
+          <a href="#principal">CREATE ACCOUNT</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="loading-screen" id="loadingScreen" aria-label="Pantalla de carga" hidden>
+      <video class="loading-bg-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true">
+        <source src="cyberpunk-samurai-moewalls-com.mp4" type="video/mp4" />
+      </video>
+      <div class="loading-content">
+        <div class="loader" aria-hidden="true">
+          <span></span>
+        </div>
+        <div class="loading-bar">
+          <p>Loading....<span></span></p>
+        </div>
+      </div>
+    </section>
+
     <header class="topbar">
       <a class="brand" href="#principal" aria-label="Ir al inicio">
         <span>virtualiza</span><strong>cion</strong>
@@ -27,6 +77,9 @@
         <a href="#retroalimentacion" aria-label="Informacion y preguntas" title="Informacion y preguntas">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 1 0 0 18.4 9.2 9.2 0 0 0 0-18.4Zm1.3 14.2h-2.5v-6.4h2.5V17Zm0-7.8h-2.5V6.8h2.5v2.4Z"/></svg>
         </a>
+        <button class="logout-button" id="logoutButton" type="button" aria-label="Cerrar sesion" title="Cerrar sesion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 3.5h8.1c.6 0 1 .4 1 1v3h-2v-2H5.8v13h6.1v-2h2v3c0 .6-.4 1-1 1H4.8c-.6 0-1-.4-1-1v-15c0-.6.4-1 1-1Zm11 4.1L21.2 12l-5.4 4.4v-3.1H9.6v-2.6h6.2V7.6Z"/></svg>
+        </button>
       </nav>
     </header>
 
@@ -155,31 +208,82 @@
       </section>
 
       <section class="section materials-section">
-        <div class="section-heading">
-          <p class="eyebrow">Materiales</p>
-          <h2>Recursos sugeridos para el laboratorio</h2>
-        </div>
-        <div class="resource-grid">
-          <article class="resource-card">
-            <span class="resource-icon">01</span>
-            <h3>Virtualizacion</h3>
-            <p>Entorno con al menos dos nodos fisicos o hosts.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-icon">02</span>
-            <h3>Almacenamiento</h3>
-            <p>SAN/NAS compartido o recurso de almacenamiento replicado.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-icon">03</span>
-            <h3>Gestion HA</h3>
-            <p>Software de gestion de cluster o herramienta HA del hipervisor.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-icon">04</span>
-            <h3>Monitoreo</h3>
-            <p>Herramienta para estado del cluster y pruebas de failover.</p>
-          </article>
+        <div class="materials-slider-shell">
+          <div class="materials-slider-heading">
+            <p class="eyebrow">Materiales</p>
+            <h2>Recursos sugeridos para el laboratorio<span>.</span></h2>
+          </div>
+
+          <div class="materials-slider" aria-live="polite">
+            <article class="materials-slide active">
+              <div class="materials-slide-title" aria-hidden="true">
+                <h3><span>Virtualizacion</span></h3>
+              </div>
+              <div class="materials-slide-content">
+                <figure class="materials-image-holder">
+                  <img src="https://iberonewsla.com/wp-content/uploads/2025/07/virtualizacion.jpg" alt="Infraestructura de virtualizacion para servidores en cluster" />
+                </figure>
+                <div class="materials-copy">
+                  <h3>Virtualizacion</h3>
+                  <p>Una infraestructura de virtualizacion multi-nodo o en cluster es un conjunto de dos o mas servidores fisicos independientes conectados entre si que comparten recursos de computo, red y almacenamiento bajo una misma interfaz de gestion centralizada.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="materials-slide">
+              <div class="materials-slide-title" aria-hidden="true">
+                <h3><span>Almacenamiento</span></h3>
+              </div>
+              <div class="materials-slide-content">
+                <figure class="materials-image-holder">
+                  <img src="https://onwork.cloud/wp-content/uploads/2023/04/SAN_VS_NAS.jpg" alt="Comparacion entre almacenamiento SAN y NAS para cluster" />
+                </figure>
+                <div class="materials-copy">
+                  <h3>Almacenamiento</h3>
+                  <p>Su proposito es desacoplar el almacenamiento del procesamiento fisico, permitiendo que cualquier nodo del cluster pueda ejecutar, leer o levantar una maquina virtual de forma identica para activar HA y migracion en vivo sin perdida de datos.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="materials-slide">
+              <div class="materials-slide-title" aria-hidden="true">
+                <h3><span>Gestion HA</span></h3>
+              </div>
+              <div class="materials-slide-content">
+                <figure class="materials-image-holder">
+                  <img src="https://img.impactotic.co/wp-content/uploads/2024/06/04173331/La-importancia-del-hivervisor.jpg" alt="Hipervisor y gestion de alta disponibilidad" />
+                </figure>
+                <div class="materials-copy">
+                  <h3>Gestion HA</h3>
+                  <p>Se refiere al conjunto de procesos, politicas y herramientas automatizadas que supervisan la infraestructura de un cluster para mantener servicios y maquinas virtuales operativos con el menor tiempo de inactividad posible.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="materials-slide">
+              <div class="materials-slide-title" aria-hidden="true">
+                <h3><span>Monitoreo</span></h3>
+              </div>
+              <div class="materials-slide-content">
+                <figure class="materials-image-holder">
+                  <img src="https://www.manageengine.com/products/active-directory-audit/images/windows-servers-failover-cluster-auditing.gif" alt="Monitoreo de cluster de failover en servidores" />
+                </figure>
+                <div class="materials-copy">
+                  <h3>Monitoreo</h3>
+                  <p>Es el proceso continuo de recoleccion, analisis y visualizacion de datos sobre rendimiento, disponibilidad y salud de los recursos fisicos y virtuales para emitir alertas tempranas y evitar interrupciones.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="materials-controls" aria-label="Controles de materiales">
+            <button class="materials-control previous" type="button" aria-label="Material anterior">
+              <span class="icon arrow-left" aria-hidden="true"></span>
+            </button>
+            <button class="materials-control next" type="button" aria-label="Material siguiente">
+              <span class="icon arrow-right" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
       </section>
 
